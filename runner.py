@@ -62,10 +62,8 @@ class Runner:
             message = operation.message
             if message.text == None:
                 return
-            if message.toType == ttypes.MIDType.USER:
-                sendto = message._from
-            else:
-                sendto = message.to
+            
+            sendto = message._from if message.totype == ttypes.MIDType.USER else message.to
 
             if message.text.startswith("setting"):
                 self.main_instance.cur.execute("SELECT mid FROM admin")
